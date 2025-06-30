@@ -2,9 +2,10 @@
 import { FormEvent, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { apiClient } from '../api/apiClient';
-import { useAuth } from '../contexts/AuthContext';
+// import { useAuth } from '../contexts/AuthContext';
 import { Input } from '../components/ui/input';
 import { Button } from '@/components/ui/button';
+import { useAuthActions } from '@/stores/useAuthStore';
 
 const RegisterPage = () => {
     const [name, setName] = useState('');
@@ -13,7 +14,7 @@ const RegisterPage = () => {
     const [passwordConfirmation, setPasswordConfirmation] = useState('');
     const [errors, setErrors] = useState<Record<string, string>>({});
     const [isLoading, setIsLoading] = useState(false);
-    const { setUser } = useAuth();
+    const { setUser } = useAuthActions();
     const navigate = useNavigate();
 
     const handleSubmit = async (e: FormEvent) => {
