@@ -6,7 +6,7 @@ interface RequestOptions extends RequestInit {
 }
 
 // L'URL de base de notre API Laravel
-const API_BASE_URL = 'http://localhost:8000/api';
+const API_BASE_URL = location.origin+"/api" //  (import.meta as any).env.VITE_BACKEND_URL  //'http://localhost:8000/api';
 
 // Notre fonction apiClient qui remplace l'instance Axios
 export const apiClient = async <T>(
