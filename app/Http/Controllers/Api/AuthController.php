@@ -17,7 +17,7 @@ class AuthController extends Controller
     /**
      * Gère l'inscription d'un nouvel utilisateur.
      */
-    public function register(Request $request): Response
+    public function register(Request $request)
     {
         $validatedData = $request->validate([
             'name' => ['required', 'string', 'max:255'],
