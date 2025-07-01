@@ -53,9 +53,9 @@ const AdminDashboard = () => {
       }
     }
   };
-  
+
   // L'URL de base pour nos images
-  const storageUrl = 'http://localhost:8000/storage/';
+  const storageUrl = location.origin+'/storage/';
 
   if (loading) return <div>Chargement du tableau de bord...</div>;
   if (error) return <div className="text-red-500">{error}</div>;
