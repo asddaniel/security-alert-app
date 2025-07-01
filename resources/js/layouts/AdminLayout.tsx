@@ -1,9 +1,10 @@
 import { Outlet, Navigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import MainLayout from './MainLayout';
+import { useAuthUser } from '@/stores/useAuthStore';
 
 const AdminLayout = () => {
-    const { user } = useAuth();
+    const user = useAuthUser();
 
     // Si l'utilisateur n'est pas un admin, on le redirige.
     if (!user || user.role !== 'admin') {
