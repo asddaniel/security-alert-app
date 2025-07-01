@@ -57,6 +57,11 @@ class SurvivalAlertController extends Controller
     public function trigger(Request $request)
     {
         $user = $request->user();
+        if(!$user){
+            return response()->json([
+                "unhauthenticated"
+            ], 403);
+        }
         $alert = $user->survivalAlert;
 
         if (!$alert || empty($alert->emergency_contacts)) {

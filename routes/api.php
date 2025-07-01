@@ -49,14 +49,14 @@ Route::middleware('auth:session')->group(function () {
         // Nous pourrions ajouter une route POST spécifique pour l'update avec des fichiers
         // Route::post('/criminals/{criminal}', [CriminalController::class, 'updateWithPhotos']);
     });
-        Route::prefix('survival-alert')->group(function() {
+        Route::middleware('auth:sanctum')->prefix('survival-alert')->group(function() {
         // Obtenir et mettre à jour la configuration de l'alerte
         Route::get('/', [SurvivalAlertController::class, 'show']);
         Route::put('/', [SurvivalAlertController::class, 'update']);
 
         // Déclencher l'alerte (via l'interface web ou l'API)
         Route::post('/trigger', [SurvivalAlertController::class, 'trigger']);
-    })->middleware("auth:sanctum");
+    });
 });
 });
 Route::get('/criminals', [CriminalController::class, 'index']);
