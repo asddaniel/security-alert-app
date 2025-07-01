@@ -38,7 +38,7 @@ Route::middleware('auth:sanctum')->group(function () {
     });
     // D'autres routes protégées viendront ici...
 });
-Route::middleware('auth:session')->group(function () {
+Route::middleware('auth:sanctum')->group(function () {
     // ... Routes de logout et user
 
     // Routes pour les criminels (accessibles à tous les utilisateurs connectés pour la lecture)
