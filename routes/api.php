@@ -56,7 +56,7 @@ Route::middleware('auth:session')->group(function () {
 
         // Déclencher l'alerte (via l'interface web ou l'API)
         Route::post('/trigger', [SurvivalAlertController::class, 'trigger']);
-    })->middleware("sanctum");
+    })->middleware("auth:sanctum");
 });
 });
 Route::get('/criminals', [CriminalController::class, 'index']);
