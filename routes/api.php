@@ -9,6 +9,7 @@ use Illuminate\View\Middleware\ShareErrorsFromSession;
 use App\Http\Controllers\Api\CriminalController;
 use App\Http\Controllers\Api\ReportController;
 use App\Http\Controllers\Api\SurvivalAlertController;
+//use Illuminate\Http\Request;
 
 
 Route::post('/criminals/{criminal}/report', [ReportController::class, 'store']);
@@ -22,8 +23,11 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
 // Routes protégées par l'authentification Sanctum
-Route::middleware('auth.session')->group(function () {
+Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
+    Route::get("/me", function(Request $request){
+            return response()->json($request->user());
+    })->middleware('auth:sanctum');;
     Route::get('/user', [AuthController::class, 'user']);
        Route::middleware('admin')->group(function () {
         // ...

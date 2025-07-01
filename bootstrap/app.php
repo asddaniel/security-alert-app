@@ -17,7 +17,7 @@ return Application::configure(basePath: dirname(__DIR__))
             $middleware->append(StartSession::class);
         //
          $middleware->alias([
-        'auth' => SessionAuth::class, 
+        // 'auth' => SessionAuth::class,
         'admin' => \App\Http\Middleware\AdminMiddleware::class,
     ]);
     })
