@@ -7,6 +7,7 @@ use App\Models\SurvivalAlert;
 use App\Notifications\SurvivalAlertTriggered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Facades\Log;
 
 class SurvivalAlertController extends Controller
 {
@@ -56,6 +57,7 @@ class SurvivalAlertController extends Controller
      */
     public function trigger(Request $request)
     {
+        Log::alert($request->all());
         $user = $request->user();
         if(!$user){
             return response()->json([
