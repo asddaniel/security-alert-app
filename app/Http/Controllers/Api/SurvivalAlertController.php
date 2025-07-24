@@ -65,7 +65,8 @@ class SurvivalAlertController extends Controller
             ], 403);
         }
         $alert = $user->survivalAlert;
-
+        log::alert($alert);
+        Log::alert("ici le message ");
         if (!$alert || empty($alert->emergency_contacts)) {
             return response()->json(['message' => 'Votre alerte de survie n\'est pas configurée ou n\'a aucun contact d\'urgence.'], 422);
         }
@@ -76,7 +77,8 @@ class SurvivalAlertController extends Controller
         ]);
 
         $location = isset($validated['latitude']) ? $validated : null;
-
+        Log::alert($alert->emergency_contacts);
+        Log::allert("le contact d'urgence ici");
         // On envoie la notification à chaque contact
         // On utilise l'envoi de notification "On-Demand" car les contacts ne sont pas des utilisateurs de notre système
         foreach ($alert->emergency_contacts as $contact) {
