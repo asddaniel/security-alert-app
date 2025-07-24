@@ -38,7 +38,7 @@ class SurvivalAlertTriggered extends Notification implements ShouldQueue
 
     public function toMail(object $notifiable): MailMessage
     {
-        Log::alert($this->triggeredByUser);
+        Log::alert("le mail est declenché ici");
         $googleMapsUrl = $this->location
             ? "http://maps.google.com/maps?q={$this->location['latitude']},{$this->location['longitude']}"
             : null;
