@@ -80,7 +80,7 @@ class SurvivalAlertController extends Controller
 
         $location = isset($validated['latitude']) ? $validated : null;
         Log::alert($alert->emergency_contacts);
-        Log::allert("le contact d'urgence ici");
+        Log::alert("le contact d'urgence ici");
         // On envoie la notification à chaque contact
         // On utilise l'envoi de notification "On-Demand" car les contacts ne sont pas des utilisateurs de notre système
         foreach ($alert->emergency_contacts as $contact) {
