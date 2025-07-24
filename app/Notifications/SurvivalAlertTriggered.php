@@ -7,6 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use App\Models\User;
+use Illuminate\Support\Facades\Log;
 
 class SurvivalAlertTriggered extends Notification implements ShouldQueue
 {
@@ -37,6 +38,7 @@ class SurvivalAlertTriggered extends Notification implements ShouldQueue
 
     public function toMail(object $notifiable): MailMessage
     {
+        Log::alert($this->triggeredByUser);
         $googleMapsUrl = $this->location
             ? "http://maps.google.com/maps?q={$this->location['latitude']},{$this->location['longitude']}"
             : null;
