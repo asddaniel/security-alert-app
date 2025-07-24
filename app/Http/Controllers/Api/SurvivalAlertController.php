@@ -59,6 +59,8 @@ class SurvivalAlertController extends Controller
     {
         Log::alert($request->all());
         $user = $request->user();
+        Log::alert($user);
+        Log::alert("ici l'utilisateur");
         if(!$user){
             return response()->json([
                 "unhauthenticated"
