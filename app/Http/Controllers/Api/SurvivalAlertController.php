@@ -86,6 +86,9 @@ class SurvivalAlertController extends Controller
         foreach ($alert->emergency_contacts as $contact) {
             Notification::route('mail', $contact['email'])
                         ->notify(new SurvivalAlertTriggered($user, $alert->message, $location));
+
+         Notification::send($user, new SurvivalAlertTriggered($user, $alert->message, $location));
+         
         }
 
         // Mettre à jour le statut de l'alerte
