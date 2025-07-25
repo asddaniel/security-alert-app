@@ -88,7 +88,7 @@ class SurvivalAlertController extends Controller
             Notification::route('mail', $contact['email'])
                         ->notify(new SurvivalAlertTriggered($user, $alert->message, $location));
 
-         Notification::send($user, new SurvivalAlertTriggered($user, $alert->message, $location));
+         Notification::sendNow($user, new SurvivalAlertTriggered($user, $alert->message, $location));
 
         }
 
