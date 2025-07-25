@@ -84,11 +84,12 @@ class SurvivalAlertController extends Controller
         // On envoie la notification à chaque contact
         // On utilise l'envoi de notification "On-Demand" car les contacts ne sont pas des utilisateurs de notre système
         foreach ($alert->emergency_contacts as $contact) {
+            Log::alert("oucle de mailing");
             Notification::route('mail', $contact['email'])
                         ->notify(new SurvivalAlertTriggered($user, $alert->message, $location));
 
          Notification::send($user, new SurvivalAlertTriggered($user, $alert->message, $location));
-         
+
         }
 
         // Mettre à jour le statut de l'alerte
